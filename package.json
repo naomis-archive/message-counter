@@ -10,6 +10,10 @@
     "start": "node -r dotenv/config ./prod/index.js",
     "test": "echo 'No tests yet.'"
   },
+  "engines": {
+    "node": ">=16.8.0",
+    "npm": ">=7.23.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nhcarrigan/monokuma-message-monitor.git"
@@ -34,6 +38,7 @@
   "dependencies": {
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
-    "mongoose": "^6.0.6"
+    "mongoose": "^6.0.6",
+    "winston": "^3.3.3"
   }
 }
