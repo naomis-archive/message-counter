@@ -27,6 +27,7 @@ export const countMessages = async (message: Message): Promise<void> => {
 
     data.messages++;
     data.userTag = author.tag;
+    data.cooldown = Date.now();
     await data.save();
   } catch (err) {
     logHandler.log("error", "Error in the countMessages module:");
