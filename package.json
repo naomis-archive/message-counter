@@ -1,6 +1,6 @@
 {
   "name": "monokuma-message-monitor",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A bot to count messages for a friend's server.",
   "main": "./prod/index.js",
   "scripts": {
