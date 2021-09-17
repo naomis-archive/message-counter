@@ -1,0 +1,44 @@
+{
+  "name": "monokuma-message-monitor",
+  "version": "1.0.0",
+  "description": "A bot to count messages for a friend's server.",
+  "main": "./prod/index.js",
+  "scripts": {
+    "prebuild": "rm -rf ./prod",
+    "build": "tsc",
+    "lint": "eslint src --max-warnings 0",
+    "start": "node -r dotenv/config ./prod/index.js",
+    "test": "echo 'No tests yet.'"
+  },
+  "engines": {
+    "node": ">=16.8.0",
+    "npm": ">=7.23.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhcarrigan/monokuma-message-monitor.git"
+  },
+  "author": "Nicholas Carrigan",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/nhcarrigan/monokuma-message-monitor/issues"
+  },
+  "homepage": "https://github.com/nhcarrigan/monokuma-message-monitor#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsdoc": "^36.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
+    "mongoose": "^6.0.6",
+    "winston": "^3.3.3"
+  }
+}
