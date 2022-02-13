@@ -1,23 +1,29 @@
-import { Client } from "discord.js";
+import { Client, WebhookClient } from "discord.js";
 
 import { IntentOptions } from "./config/IntentOptions";
 import { connectDatabase } from "./database/connectDatabase";
 import { handleMessages } from "./modules/handleMessages";
+import { errorHandler } from "./utils/errorHandler";
 import { logHandler } from "./utils/logHandler";
 import { validateEnv } from "./utils/validateEnv";
 
 (async () => {
-  validateEnv();
+  try {
+    validateEnv();
 
-  await connectDatabase();
+    await connectDatabase();
 
-  const bot = new Client({ intents: IntentOptions });
+    const bot = new Client({ intents: IntentOptions });
 
-  bot.on("messageCreate", async (message) => await handleMessages(message));
+    bot.on("messageCreate", async (message) => await handleMessages(message));
 
-  bot.on("ready", () => {
-    logHandler.log("debug", "Discord ready!");
-  });
+    bot.on("ready", async () => {
+      const hook = new WebhookClient({ url: process.env.DEBUG_HOOK as string });
+      await hook.send("Monokuma Message Monitor online!");
+    });
 
-  await bot.login(process.env.TOKEN);
+    await bot.login(process.env.TOKEN);
+  } catch (err) {
+    await errorHandler("index", err);
+  }
 })();
