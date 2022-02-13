@@ -1,7 +1,7 @@
 import { Message, MessageEmbed } from "discord.js";
 
 import MessageCounts from "../database/models/MessageCount";
-import { logHandler } from "../utils/logHandler";
+import { errorHandler } from "../utils/errorHandler";
 
 /**
  * Displays the top ten members by message count.
@@ -29,7 +29,6 @@ export const display = async (message: Message): Promise<void> => {
 
     await message.channel.send({ embeds: [leaderEmbed] });
   } catch (err) {
-    logHandler.log("error", "Error in the display command:");
-    logHandler.log("error", err);
+    await errorHandler("display command", err);
   }
 };

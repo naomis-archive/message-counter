@@ -1,7 +1,7 @@
 import { Message } from "discord.js";
 
 import MessageCounts from "../database/models/MessageCount";
-import { logHandler } from "../utils/logHandler";
+import { errorHandler } from "../utils/errorHandler";
 
 /**
  * Module to count messages from a user.
@@ -30,7 +30,6 @@ export const countMessages = async (message: Message): Promise<void> => {
     data.cooldown = Date.now();
     await data.save();
   } catch (err) {
-    logHandler.log("error", "Error in the countMessages module:");
-    logHandler.log("error", err);
+    await errorHandler("countMessages", err);
   }
 };
