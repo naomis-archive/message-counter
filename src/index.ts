@@ -4,7 +4,6 @@ import { IntentOptions } from "./config/IntentOptions";
 import { connectDatabase } from "./database/connectDatabase";
 import { handleMessages } from "./modules/handleMessages";
 import { errorHandler } from "./utils/errorHandler";
-import { logHandler } from "./utils/logHandler";
 import { validateEnv } from "./utils/validateEnv";
 
 (async () => {
