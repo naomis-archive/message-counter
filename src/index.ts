@@ -2,6 +2,7 @@ import { Client, WebhookClient } from "discord.js";
 
 import { IntentOptions } from "./config/IntentOptions";
 import { connectDatabase } from "./database/connectDatabase";
+import { handleInteraction } from "./modules/handleInteraction";
 import { handleMessages } from "./modules/handleMessages";
 import { errorHandler } from "./utils/errorHandler";
 import { validateEnv } from "./utils/validateEnv";
@@ -16,9 +17,14 @@ import { validateEnv } from "./utils/validateEnv";
 
     bot.on("messageCreate", async (message) => await handleMessages(message));
 
+    bot.on(
+      "interactionCreate",
+      async (interaction) => await handleInteraction(interaction)
+    );
+
     bot.on("ready", async () => {
       const hook = new WebhookClient({ url: process.env.DEBUG_HOOK as string });
-      await hook.send("Monokuma Message Monitor online!");
+      await hook.send("Naomi Message Monitor online!");
     });
 
     await bot.login(process.env.TOKEN);
