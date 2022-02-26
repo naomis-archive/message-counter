@@ -1,8 +1,6 @@
 import { Message } from "discord.js";
 
-import { display } from "../commands/display";
-import { reset } from "../commands/reset";
-import { AuthorisedManagers } from "../config/AuthorisedManagers";
+import { OptoutUsers } from "../config/OptoutUsers";
 import { errorHandler } from "../utils/errorHandler";
 
 import { countMessages } from "./countMessages";
@@ -14,26 +12,9 @@ import { countMessages } from "./countMessages";
  */
 export const handleMessages = async (message: Message): Promise<void> => {
   try {
-    if (message.author.bot) {
+    if (message.author.bot || OptoutUsers.includes(message.author.id)) {
       return;
     }
-
-    if (message.content.startsWith("==")) {
-      if (!AuthorisedManagers.includes(message.author.id)) {
-        return;
-      }
-
-      if (message.content.startsWith("==display")) {
-        await display(message);
-        return;
-      }
-
-      if (message.content.startsWith("==reset")) {
-        await reset(message);
-      }
-      return;
-    }
-
     await countMessages(message);
   } catch (err) {
     await errorHandler("handleMessages", err);

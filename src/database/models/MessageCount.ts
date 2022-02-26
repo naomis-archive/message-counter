@@ -1,6 +1,7 @@
 import { Document, model, Schema } from "mongoose";
 
 export interface MessageCountInt extends Document {
+  serverId: string;
   userId: string;
   userTag: string;
   messages: number;
@@ -8,6 +9,7 @@ export interface MessageCountInt extends Document {
 }
 
 export const MessageCount = new Schema({
+  serverId: String,
   userId: String,
   userTag: String,
   messages: Number,
