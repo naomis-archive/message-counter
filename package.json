@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nhcarrigan/discord-message-monitor.git"
+    "url": "git+https://github.com/nhcarrigan/discord-message-counter.git"
   },
   "author": "Naomi Carrigan",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/nhcarrigan/discord-message-monitor/issues"
+    "url": "https://github.com/nhcarrigan/discord-message-counter/issues"
   },
-  "homepage": "https://github.com/nhcarrigan/discord-message-monitor#readme",
+  "homepage": "https://github.com/nhcarrigan/discord-message-counter#readme",
   "devDependencies": {
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "5.12.1",
