@@ -10,7 +10,7 @@ import { logHandler } from "./logHandler";
  *
  * @param {string} context A description of where the error occurred.
  * @param {Error} err The error object.
- * @returns {String} An error ID.
+ * @returns {string} An error ID.
  */
 export const errorHandler = async (
   context: string,
