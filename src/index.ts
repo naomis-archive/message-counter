@@ -14,6 +14,7 @@ import { validateEnv } from "./utils/validateEnv";
     await connectDatabase();
 
     const bot = new Client({ intents: IntentOptions });
+    const hook = new WebhookClient({ url: process.env.DEBUG_HOOK as string });
 
     bot.on("messageCreate", async (message) => await handleMessages(message));
 
@@ -23,8 +24,19 @@ import { validateEnv } from "./utils/validateEnv";
     );
 
     bot.on("ready", async () => {
-      const hook = new WebhookClient({ url: process.env.DEBUG_HOOK as string });
       await hook.send("Naomi Message Monitor online!");
+    });
+
+    bot.on("guildCreate", async (guild) => {
+      await hook.send(
+        `Message counter joined guild: ${guild.name} - ${guild.id}`
+      );
+    });
+
+    bot.on("guildDelete", async (guild) => {
+      await hook.send(
+        `Message counter left guild: ${guild.name} - ${guild.id}`
+      );
     });
 
     await bot.login(process.env.TOKEN);
