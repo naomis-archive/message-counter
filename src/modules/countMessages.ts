@@ -10,11 +10,16 @@ import { errorHandler } from "../utils/errorHandler";
  */
 export const countMessages = async (message: Message): Promise<void> => {
   try {
-    const { author } = message;
+    const { author, guildId } = message;
+
+    if (!guildId) {
+      return;
+    }
 
     const data =
-      (await MessageCounts.findOne({ userId: author.id })) ||
+      (await MessageCounts.findOne({ serverId: guildId, userId: author.id })) ||
       (await MessageCounts.create({
+        serverId: guildId,
         userId: author.id,
         userTag: author.tag,
         messages: 0,
