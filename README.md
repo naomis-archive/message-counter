@@ -1,12 +1,10 @@
-# Project Name
+# Discord Message Monitor
 
-Project Description
+A Discord bot to count messages sent in a server.
 
 ## Live Version
 
-This page is not yet deployed.
-
-<!--This page is currently deployed. [View the live website.]()-->
+This page is currently deployed. [View the live website.](https://docs.nhcarrigan.com/#/discord-message-counter/index)
 
 ## Feedback and Bugs
 
@@ -32,4 +30,4 @@ The full license terms may be viewed in the [LICENSE.md file](./LICENSE.md)
 
 ## Contact
 
-We may be contacted through our [Chat Server](http://chat.nhcarrigan.com) or via [email form](https://contact.nhcarrigan.com).
+We may be contacted through our [Chat Server](http://chat.nhcarrigan.com) or via `contact@nhcarrigan.com`.
