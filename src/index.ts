@@ -4,6 +4,7 @@ import { IntentOptions } from "./config/IntentOptions";
 import { connectDatabase } from "./database/connectDatabase";
 import { handleInteraction } from "./modules/handleInteraction";
 import { handleMessages } from "./modules/handleMessages";
+import { startServer } from "./server/server";
 import { errorHandler } from "./utils/errorHandler";
 import { validateEnv } from "./utils/validateEnv";
 
@@ -12,6 +13,8 @@ import { validateEnv } from "./utils/validateEnv";
     validateEnv();
 
     await connectDatabase();
+
+    await startServer();
 
     const bot = new Client({ intents: IntentOptions });
     const hook = new WebhookClient({ url: process.env.DEBUG_HOOK as string });
