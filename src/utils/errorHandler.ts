@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/node";
-import { MessageEmbed, WebhookClient } from "discord.js";
+import { EmbedBuilder, WebhookClient } from "discord.js";
 import { v4 } from "uuid";
 
 import { logHandler } from "./logHandler";
@@ -27,14 +27,19 @@ export const errorHandler = async (
 
   const hook = new WebhookClient({ url: process.env.DEBUG_HOOK as string });
 
-  const embed = new MessageEmbed();
+  const embed = new EmbedBuilder();
   embed.setTitle(`There was an error in the ${context}`);
   embed.setDescription(error.message.slice(0, 2000));
-  embed.addField(
-    "Stack",
-    `\`\`\`${error.stack?.slice(0, 1000) || "no stack"}\`\`\``
-  );
-  embed.addField("Error ID", errorId);
+  embed.addFields([
+    {
+      name: "Stack",
+      value: `\`\`\`${error.stack?.slice(0, 1000) || "no stack"}\`\`\``,
+    },
+    {
+      name: "Error ID",
+      value: errorId,
+    },
+  ]);
 
   await hook.send({ embeds: [embed] });
   return errorId;

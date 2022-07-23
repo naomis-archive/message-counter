@@ -10,7 +10,7 @@ import { errorHandler } from "../utils/errorHandler";
  */
 export const handleInteraction = async (interaction: Interaction) => {
   try {
-    if (!interaction.isCommand()) {
+    if (!interaction.isChatInputCommand()) {
       return;
     }
 

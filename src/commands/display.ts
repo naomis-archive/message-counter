@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { MessageEmbed } from "discord.js";
+import { EmbedBuilder, PermissionFlagsBits } from "discord.js";
 
 import MessageCounts from "../database/models/MessageCount";
 import { Command } from "../interfaces/Command";
@@ -22,7 +22,7 @@ export const display: Command = {
       }
       if (
         typeof member.permissions === "string" ||
-        !member.permissions.has("MANAGE_GUILD")
+        !member.permissions.has(PermissionFlagsBits.ManageGuild)
       ) {
         await interaction.editReply(
           "You do not have permission to use this command."
@@ -39,18 +39,17 @@ export const display: Command = {
         return;
       }
 
-      const leaderEmbed = new MessageEmbed();
+      const leaderEmbed = new EmbedBuilder();
       leaderEmbed.setTitle("Top 10 Message Counts");
       leaderEmbed.setDescription(
         "These are the members who have been most active in the server!"
       );
-
-      leaders.forEach((leader, index) => {
-        leaderEmbed.addField(
-          `${index + 1}. ${leader.userTag}`,
-          `${leader.messages} messages`
-        );
-      });
+      leaderEmbed.addFields(
+        leaders.map((leader, index) => ({
+          name: `${index + 1}. ${leader.userTag}`,
+          value: `${leader.messages} messages`,
+        }))
+      );
 
       await interaction.editReply({ embeds: [leaderEmbed] });
     } catch (err) {
