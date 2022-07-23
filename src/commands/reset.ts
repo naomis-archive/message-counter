@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
+import { PermissionFlagsBits } from "discord.js";
 
 import MessageCounts from "../database/models/MessageCount";
 import { Command } from "../interfaces/Command";
@@ -21,7 +22,7 @@ export const reset: Command = {
       }
       if (
         typeof member.permissions === "string" ||
-        !member.permissions.has("MANAGE_GUILD")
+        !member.permissions.has(PermissionFlagsBits.ManageGuild)
       ) {
         await interaction.editReply(
           "You do not have permission to use this command."
