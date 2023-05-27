@@ -6,6 +6,7 @@ import { handleInteraction } from "./modules/handleInteraction";
 import { handleMessages } from "./modules/handleMessages";
 import { errorHandler } from "./utils/errorHandler";
 import { validateEnv } from "./utils/validateEnv";
+import { registerCommands } from "./utils/registerCommands";
 
 (async () => {
   try {
@@ -24,6 +25,7 @@ import { validateEnv } from "./utils/validateEnv";
     );
 
     bot.on("ready", async () => {
+      await registerCommands();
       await hook.send("Naomi Message Monitor online!");
     });
 
