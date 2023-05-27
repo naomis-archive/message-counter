@@ -14,7 +14,7 @@ export const registerCommands = async () => {
     const botId = process.env.BOT_ID as string;
     const homeGuild = process.env.HOME_GUILD as string;
     const rest = new REST({ version: "10" }).setToken(
-      process.env.DISCORD_TOKEN as string
+      process.env.TOKEN as string
     );
 
     const commandData = CommandList.map((command) => command.data.toJSON());
