@@ -5,8 +5,8 @@ import { connectDatabase } from "./database/connectDatabase";
 import { handleInteraction } from "./modules/handleInteraction";
 import { handleMessages } from "./modules/handleMessages";
 import { errorHandler } from "./utils/errorHandler";
-import { validateEnv } from "./utils/validateEnv";
 import { registerCommands } from "./utils/registerCommands";
+import { validateEnv } from "./utils/validateEnv";
 
 (async () => {
   try {
