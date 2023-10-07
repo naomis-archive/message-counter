@@ -38,8 +38,8 @@ devDependencies:
     specifier: 1.0.1
     version: 1.0.1(typescript@5.2.2)
   '@types/uuid':
-    specifier: 9.0.4
-    version: 9.0.4
+    specifier: 9.0.5
+    version: 9.0.5
   eslint:
     specifier: 8.51.0
     version: 8.51.0
@@ -362,8 +362,8 @@ packages:
     resolution: {integrity: sha512-txGIh+0eDFzKGC25zORnswy+br1Ha7hj5cMVwKIU7+s0U2AxxJru/jZSMU6OC9MJWP6+pc/hc6ZjyZShpsyY2g==}
     dev: false
 
-  /@types/uuid@9.0.4:
-    resolution: {integrity: sha512-zAuJWQflfx6dYJM62vna+Sn5aeSWhh3OB+wfUEACNcqUSc0AGc5JKl+ycL1vrH7frGTXhJchYjE1Hak8L819dA==}
+  /@types/uuid@9.0.5:
+    resolution: {integrity: sha512-xfHdwa1FMJ082prjSJpoEI57GZITiQz10r3vEJCHa2khEFQjKy91aWKz6+zybzssCvXUwE1LQWgWVwZ4nYUvHQ==}
     dev: true
 
   /@types/webidl-conversions@7.0.0:
