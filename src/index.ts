@@ -26,19 +26,27 @@ import { validateEnv } from "./utils/validateEnv";
 
     bot.on("ready", async () => {
       await registerCommands();
-      await hook.send("Naomi Message Monitor online!");
+      await hook.send({
+        content: "Naomi Message Monitor online!",
+        username: "Message Counter",
+        avatarURL: "https://cdn.nhcarrigan.com/avatars/nhcarrigan.png",
+      });
     });
 
     bot.on("guildCreate", async (guild) => {
-      await hook.send(
-        `Message counter joined guild: ${guild.name} - ${guild.id}`
-      );
+      await hook.send({
+        content: `Message counter joined guild: ${guild.name} - ${guild.id}`,
+        username: "Message Counter",
+        avatarURL: "https://cdn.nhcarrigan.com/avatars/nhcarrigan.png",
+      });
     });
 
     bot.on("guildDelete", async (guild) => {
-      await hook.send(
-        `Message counter left guild: ${guild.name} - ${guild.id}`
-      );
+      await hook.send({
+        content: `Message counter left guild: ${guild.name} - ${guild.id}`,
+        username: "Message Counter",
+        avatarURL: "https://cdn.nhcarrigan.com/avatars/nhcarrigan.png",
+      });
     });
 
     await bot.login(process.env.TOKEN);

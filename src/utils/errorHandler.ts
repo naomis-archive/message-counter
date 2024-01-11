@@ -41,6 +41,10 @@ export const errorHandler = async (
     },
   ]);
 
-  await hook.send({ embeds: [embed] });
+  await hook.send({
+    embeds: [embed],
+    username: "Message Counter",
+    avatarURL: "https://cdn.nhcarrigan.com/avatars/nhcarrigan.png",
+  });
   return errorId;
 };
